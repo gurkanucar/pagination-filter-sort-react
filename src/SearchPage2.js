@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useQuery } from "react-query";
+import React from "react";
 import { useSearchPage } from "./useSearchPage";
 
-function SearchPage2() {
+const SearchPage2 = () => {
   const {
     city,
     setCity,
@@ -135,6 +133,6 @@ function SearchPage2() {
       )}
     </div>
   );
-}
+};
 
 export default SearchPage2;
