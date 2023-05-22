@@ -90,7 +90,7 @@ export const useSearchPage = ({ searchUrl }) => {
       title: "Star Count",
       dataIndex: "starCount",
       key: "starCount",
-      // render: (starCount) => starCount.toFixed(2),
+      render: (starCount) => starCount.toFixed(2),
     },
     {
       title: "Review Count",
