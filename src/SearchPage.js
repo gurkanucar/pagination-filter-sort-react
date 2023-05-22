@@ -71,7 +71,7 @@ function SearchPage() {
             dataSource={data.content}
             columns={columns}
             scroll={{
-              y: 600,
+              y: 630,
             }}
             pagination={{
               current: currentPage,
