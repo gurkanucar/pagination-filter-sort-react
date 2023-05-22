@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SearchPage from "./SearchPage";
-import SearchPagePure from "./SearchPagePure";
 import SearchPage2 from "./SearchPage2";
 
 const queryClient = new QueryClient({
