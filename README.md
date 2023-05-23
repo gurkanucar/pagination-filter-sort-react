@@ -9,6 +9,9 @@
 ### just connect to your api and set your fields, params etc.
 
 ```
+
+localhost:3000/search?city=istanbul&restaurantName=&sortDirection=DESC&sortField=reviewsCount&page=8&size=10 // example
+
 /search         //using antdesign 
 /search2        //without ui library 
 ```

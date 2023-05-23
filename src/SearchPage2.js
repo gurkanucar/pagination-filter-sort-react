@@ -14,14 +14,12 @@ const SearchPage2 = () => {
     pageSize,
     setPageSize,
     currentPage,
-    setCurrentPage,
     isLoading,
     isError,
     error,
     data,
     handleSearch,
     handlePageChange,
-    handlePageSizeChange,
     columns,
   } = useSearchPage({ searchUrl: "/search2" });
 
