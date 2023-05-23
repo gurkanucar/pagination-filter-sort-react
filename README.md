@@ -6,10 +6,10 @@
 
 ## How to Use?
 
-### just connect to your api and set your fields, params etc.
+- just connect to your api and set your fields, params etc.
+- you can use **data.json** for trying
 
 ```
-
 localhost:3000/search?city=istanbul&restaurantName=&sortDirection=DESC&sortField=reviewsCount&page=8&size=10 // example
 
 /search         //using antdesign 
