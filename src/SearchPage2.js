@@ -3,25 +3,28 @@ import { useSearchPage } from "./useSearchPage";
 
 const SearchPage2 = () => {
   const {
-    city,
-    setCity,
-    restaurantName,
-    setRestaurantName,
-    sortDirection,
-    setSortDirection,
-    sortField,
-    setSortField,
-    pageSize,
-    setPageSize,
-    currentPage,
+    params,
     isLoading,
     isError,
     error,
-    data,
-    handleSearch,
+    setParamField,
     handlePageChange,
+    handlePageSizeChange,
+    handleSearch,
     columns,
-  } = useSearchPage({ searchUrl: "/search2" });
+    data,
+  } = useSearchPage({
+    searchUrl: "/search2",
+  });
+
+  const {
+    city,
+    restaurantName,
+    sortDirection,
+    sortField,
+    pageSize,
+    currentPage,
+  } = params;
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -40,24 +43,24 @@ const SearchPage2 = () => {
           type="text"
           value={city}
           placeholder="city"
-          onChange={(e) => setCity(e.target.value)}
+          onChange={(e) => setParamField("city", e.target.value)}
         />
         <input
           type="text"
           placeholder="restaurant name"
           value={restaurantName}
-          onChange={(e) => setRestaurantName(e.target.value)}
+          onChange={(e) => setParamField("restaurantName", e.target.value)}
         />
         <select
           value={sortDirection}
-          onChange={(e) => setSortDirection(e.target.value)}
+          onChange={(e) => setParamField("sortDirection", e.target.value)}
         >
           <option value="DESC">Descending</option>
           <option value="ASC">Ascending</option>
         </select>
         <select
           value={sortField}
-          onChange={(e) => setSortField(e.target.value)}
+          onChange={(e) => setParamField("sortField", e.target.value)}
         >
           <option value="restaurantName">Restaurant Name</option>
           <option value="reviewsCount">Reviews Count</option>
@@ -92,7 +95,7 @@ const SearchPage2 = () => {
               <span>Page Size:</span>
               <select
                 value={pageSize}
-                onChange={(e) => setPageSize(e.target.value)}
+                onChange={(e) => setParamField("pageSize", e.target.value)}
               >
                 <option value="10">10</option>
                 <option value="20">20</option>

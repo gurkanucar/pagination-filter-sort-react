@@ -4,25 +4,28 @@ import { Input, Select, Button, Table } from "antd";
 
 const SearchPage = () => {
   const {
-    city,
-    setCity,
-    restaurantName,
-    setRestaurantName,
-    sortDirection,
-    setSortDirection,
-    sortField,
-    setSortField,
-    pageSize,
-    currentPage,
+    params,
     isLoading,
     isError,
     error,
-    data,
-    handleSearch,
+    setParamField,
     handlePageChange,
     handlePageSizeChange,
+    handleSearch,
     columns,
-  } = useSearchPage({ searchUrl: "/search" });
+    data,
+  } = useSearchPage({
+    searchUrl: "/search",
+  });
+
+  const {
+    city,
+    restaurantName,
+    sortDirection,
+    sortField,
+    pageSize,
+    currentPage,
+  } = params;
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -33,25 +36,38 @@ const SearchPage = () => {
   }
 
   return (
-    <div style={{ margin: 50 }}>
-      <div style={{ display: "flex", gap: 8, marginBottom: 16 }}>
+    <div
+      style={{
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 20,
+        overflow: "hidden",
+      }}
+    >
+      <div style={{ display: "flex", gap: 8 }}>
         <Input
           type="text"
           value={city}
           placeholder="city"
-          onChange={(e) => setCity(e.target.value)}
+          onChange={(e) => setParamField("city", e.target.value)}
         />
         <Input
           type="text"
           placeholder="restaurant name"
           value={restaurantName}
-          onChange={(e) => setRestaurantName(e.target.value)}
+          onChange={(e) => setParamField("restaurantName", e.target.value)}
         />
-        <Select value={sortDirection} onChange={setSortDirection}>
+        <Select
+          value={sortDirection}
+          onChange={(value) => setParamField("sortDirection", value)}
+        >
           <Select.Option value="DESC">Descending</Select.Option>
           <Select.Option value="ASC">Ascending</Select.Option>
         </Select>
-        <Select value={sortField} onChange={setSortField}>
+        <Select
+          value={sortField}
+          onChange={(value) => setParamField("sortField", value)}
+        >
           <Select.Option value="restaurantName">Restaurant Name</Select.Option>
           <Select.Option value="reviewsCount">Reviews Count</Select.Option>
           <Select.Option value="averageReviewStar">
@@ -67,7 +83,7 @@ const SearchPage = () => {
             dataSource={data.content}
             columns={columns}
             scroll={{
-              y: 630,
+              y: 650,
             }}
             pagination={{
               current: currentPage,
@@ -76,7 +92,9 @@ const SearchPage = () => {
               onChange: handlePageChange,
               onShowSizeChange: handlePageSizeChange,
               showSizeChanger: true,
-              pageSizeOptions: ["10", "20", "30"],
+              pageSizeOptions: ["5", "10", "20", "30", "50", "100"],
+              showTotal: (total, range) =>
+                `Showing ${range[0]}-${range[1]} of ${total} items`,
             }}
           />
         </div>
